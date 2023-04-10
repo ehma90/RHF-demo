@@ -1,27 +1,28 @@
-import React from 'react'
-import {useForm} from "react-hook-form"
-
+import React from "react";
+import { useForm } from "react-hook-form";
+import {DevTool} from "@hookform/devtools"
 
 function YouTubeForm() {
-  const form = useForm()
-  const {register} = form
-  const {name, ref, onChange, onBlur} = register("username")
+  const form = useForm();
+  const { register, control } = form;
+
   return (
     <div>
       <form>
         <label htmlFor="username">Username</label>
-        <input type="text" id='username' name={name} ref={ref} onChange={onChange} onBlur={onBlur} />
+        <input type="text" id="username" {...register("username")} />
 
-        <label htmlFor='email'>Email</label>
-        <input type="email" id='email' name='email' />
+        <label htmlFor="email">Email</label>
+        <input type="email" id="email" {...register("email")} />
 
-        <lable htmlFor='channel'>Channel</lable>
-        <input type="text" id='channel' name='channel'/>
+        <lable htmlFor="channel">Channel</lable>
+        <input type="text" id="channel" {...register("channel")} />
 
         <button>Submit</button>
       </form>
+      <DevTool control={control}/>
     </div>
-  )
+  );
 }
 
-export default YouTubeForm
+export default YouTubeForm;
