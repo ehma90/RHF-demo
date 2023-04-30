@@ -4,11 +4,14 @@ import {DevTool} from "@hookform/devtools"
 
 function YouTubeForm() {
   const form = useForm();
-  const { register, control } = form;
+  const { register, control, handleSubmit } = form;
 
+  const onSubmit = () => {
+    console.log("hook form")
+  }
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="username">Username</label>
         <input type="text" id="username" {...register("username")} />
 
